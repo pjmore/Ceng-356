@@ -11,11 +11,10 @@ Vec = pygame.math.Vector2
 
 
 class ServerChannel(Channel):
-
+    # Server's representation of a single connected client
     def __init__(self, *args, **kwargs):
         Channel.__init__(self, *args, **kwargs)
         self.id = str(self._server.next_id())
-        self._player_pos = [0,0]
         self.p1 = None
         self.player = 0
         self.weapon_list = []
@@ -23,17 +22,22 @@ class ServerChannel(Channel):
 
 
     def pass_on(self, data):
+        #passes on the data to all other clients
         self._server.send_to_all(data)
 
     def Close(self):
+        # closes the channel
         self._server.delete_player(self)
 
 
     def Network_move(self, data):
+        # acton:move callback function updates stored position and passes on the data
         self.sprite.Pos = Vec(data['p_pos'][0],data['p_pos'][1])
         self.pass_on(data)
 
     def Network_fire(self,data):
+        # action:fire callback function. notifies the client that did not fire that the other client has fired
+        # updates weapon_list
         pos = data['p_pos']
         player = data['p']
         self.weapon_list.append({'p_pos':pos, 'p':player,'radius':10})
@@ -59,6 +63,7 @@ class SpaceServer(Server):
 
 
     def Connected(self, channel, addr):
+        # attempts to connect to a player at the given channel and address
         if self.p1 and self.p2:
             channel.Send({"action": "init", "p": "full"})
             self.waiting_player_list.append(channel)
@@ -66,10 +71,12 @@ class SpaceServer(Server):
             self.add_player(channel,addr)
 
     def next_id(self):
+        #generates a unique id for the server to identify listeners with
         self.id += 1
         return self.id
 
     def add_player(self,player,addr):
+        #adds player to the server and assigns them a player number
         if self.p1 is None:
             self.p1 = player
             player.player = 1
@@ -102,6 +109,7 @@ class SpaceServer(Server):
             return
 
     def delete_player(self, player):
+        #deletes the player off of the server
         self.ready = False
         if self.p1 is player:
             self.p1 = None
@@ -120,6 +128,7 @@ class SpaceServer(Server):
             self.add_player(self.waiting_player_list.popleft())
 
     def collision_detection(self):
+        # detects planet-ship collisions then weapon-ship collisions
         self.weapon_list = []
         self.weapon_list = self.p1.weapon_list + self.p2.weapon_list
         for planet in self.planet_list:
@@ -163,17 +172,14 @@ class SpaceServer(Server):
 
 
     def distance(self, PosA, PosB):
+        # calculates the Euclidean distance between two points
         temp = PosA - PosB
         distance = temp.length()
         return distance
 
 
     def send_to_all(self, data):
-        """
-        Send data to all connected clients.
-        :param data: Data to send
-        :return: None
-        """
+        #sends the dict data to all listening clients
         if self.p1 is not None:
             self.p1.Send(data)
         if self.p2 is not None:
@@ -181,10 +187,7 @@ class SpaceServer(Server):
 
 
     def launch_server(self):
-        """
-        Main server loop.
-        :return: None
-        """
+        # main server loop. Monitors connections and checks collisions
         while True:
             self.Pump()
             events = pygame.event.get()
@@ -194,9 +197,8 @@ class SpaceServer(Server):
                         exit(0)
                 if event.type == pygame.QUIT:
                     exit(0)
-            if self.ready:
-                if self.p1 is not None and self.p2 is not None:
-                    self.collision_detection()
+            if self.ready and self.p1 is not None and self.p2 is not None:
+                self.collision_detection()
                 sleep(1/60) # 0.01, 0.0001?
 
 os.environ["SDL_VIDEODRIVER"] = "dummy"
