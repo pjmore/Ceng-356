@@ -1,7 +1,5 @@
 # Documentation is a work in progress
 # Ceng-356
-initial code commit. Working copy, uncommented
-#TODO comment, fix program flow
 
 ## Instructions
 
@@ -12,7 +10,7 @@ initial code commit. Working copy, uncommented
   
         \<host\>:\<port\>
         
-Ive only ran this off of a localhost so no idea if it works for setting up a remote server.
+I've only ran this off of a localhost so no idea if it works for setting up a remote server.
   
 #### 3.
   The client is started nearly the same way as the server. To run the run CLient.py with the following argument:
@@ -22,8 +20,6 @@ Ive only ran this off of a localhost so no idea if it works for setting up a rem
   
 #### The game
 The goal of the game is to cause the other player to crash into the planet. The planet has gravity which scales with the size of the planet. Your ship will point towards the mouse and will accelerate towards the mouse when LMB is pressed. Each ship has a weapon mapped to the RMB on a two second cooldown. The weapon expands out from the initial point of use in a circle, if the enemy ship is hit it will be accelerated in the direction of the hit.
-
-## Other
 
 ## Resources and references
 
@@ -35,3 +31,6 @@ The goal of the game is to cause the other player to crash into the planet. The 
 ### Code
 - [PodSixNet - ](https://github.com/chr15m/PodSixNet)Created by Chris McCormick
 - [Pygame - ](https://www.pygame.org/news)Original author was Pete Shinners
+
+
+### Liscence
