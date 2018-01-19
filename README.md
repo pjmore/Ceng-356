@@ -14,7 +14,7 @@ Typically ran of localhost
   
 #### 3.
   The client is started nearly the same way as the server. To run the run CLient.py with the following argument:
-    <host>:<port>
+    \<host\>:\<port\>
   ex. localhost:40000
   Once two separate clients are connected the game starts
   
