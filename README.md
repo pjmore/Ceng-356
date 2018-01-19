@@ -8,8 +8,10 @@ initial code commit. Working copy, uncommented
 #### 1. 
   To run Pew-Pew pygame must be installed on your computer. Installation files and instructions can be found [here](https://www.pygame.org/wiki/GettingStarted)
 #### 2. 
-  A server must be started before the clients. To run the server run Server.py from the command line with a single argument formatted like this:\n
-        \<host\>:\<port\>\n
+  A server must be started before the clients. To run the server run Server.py from the command line with a single argument formatted like this:
+  
+        \<host\>:\<port\>
+        
 Typically ran of localhost
   
 #### 3.
