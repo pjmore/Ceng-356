@@ -33,5 +33,5 @@ The goal of the game is to cause the other player to crash into the planet. The 
 - [Background - ](https://opengameart.org/content/space-background)Created by Cuzco
 
 ### Code
--[PodSixNet - ](https://github.com/chr15m/PodSixNet)Created by Chris McCormick
--[Pygame - ](https://www.pygame.org/news)Original author was Pete Shinners
+- [PodSixNet - ](https://github.com/chr15m/PodSixNet)Created by Chris McCormick
+- [Pygame - ](https://www.pygame.org/news)Original author was Pete Shinners
