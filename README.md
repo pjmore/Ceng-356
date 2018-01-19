@@ -8,8 +8,8 @@ initial code commit. Working copy, uncommented
 #### 1. 
   To run Pew-Pew pygame must be installed on your computer. Installation files and instructions can be found [here](https://www.pygame.org/wiki/GettingStarted)
 #### 2. 
-  A server must be started before the clients. To run the server run Server.py from the command line with a single argument formatted like this:
-        \<host\>:\<port\>
+  A server must be started before the clients. To run the server run Server.py from the command line with a single argument formatted like this:\n
+        \<host\>:\<port\>\n
 Typically ran of localhost
   
 #### 3.
@@ -22,3 +22,7 @@ Typically ran of localhost
 The goal of the game is to cause the other player to crash into the planet. The planet has gravity which scales with the size of the planet. Your ship will point towards the mouse and will accelerate towards the mouse when LMB is pressed. Each ship has a weapon mapped to the RMB on a two second cooldown. The weapon expands out from the initial point of use in a circle, if the enemy ship is hit it will be accelerated in the direction of the hit.
 
 ## Other
+
+## Resources and references
+
+- 
