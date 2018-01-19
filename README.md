@@ -1,6 +1,6 @@
 # Documentation is a work in progress
 # Ceng-356
-initial code commit. Workin copy, uncommented
+initial code commit. Working copy, uncommented
 #TODO comment, fix program flow
 
 ## Instructions
